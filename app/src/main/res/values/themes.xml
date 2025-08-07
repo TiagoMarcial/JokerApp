@@ -10,4 +10,6 @@
     </style>
 
     <style name="Theme.JokerApp" parent="Base.Theme.JokerApp" />
+    <style name="Theme.JokerAppDev.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.JokerAppDev.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
