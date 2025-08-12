@@ -1,6 +1,8 @@
 package dev.tiagomarcial.jokerapp.view
 
 import android.view.View
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
@@ -11,8 +13,13 @@ class CategoryItem(private val category: Category) : Item<CategoryItem.CategoryV
 
     class CategoryViewHolder(view: View) : GroupieViewHolder(view)
 
+    override fun createViewHolder(itemView: View): CategoryViewHolder {
+        return CategoryViewHolder(itemView)
+    }
+
     override fun bind(viewHolder: CategoryViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        viewHolder.itemView.findViewById<TextView>(R.id.txt_category).text = category.name
+        viewHolder.itemView.findViewById<LinearLayout>(R.id.container_category).setBackgroundColor(category.bgColor.toInt())
     }
 
     override fun getLayout(): Int {
