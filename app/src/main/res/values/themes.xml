@@ -12,4 +12,12 @@
     <style name="Theme.JokerApp" parent="Base.Theme.JokerApp" />
     <style name="Theme.JokerAppDev.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="Theme.JokerAppDev.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/blue_700</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        <item name="postSplashScreenTheme">@style/Theme.JokerApp</item>
+        
+    </style>
 </resources>

@@ -52,6 +52,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
     implementation("com.github.lisawray.groupie:groupie:2.9.0")
     implementation("com.github.lisawray.groupie:groupie-viewbinding:2.9.0")
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
