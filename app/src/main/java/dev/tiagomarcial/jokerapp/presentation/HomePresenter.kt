@@ -1,5 +1,6 @@
 package dev.tiagomarcial.jokerapp.presentation
 
+import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
 import dev.tiagomarcial.jokerapp.data.CategoryRemoteDataSource
@@ -22,7 +23,12 @@ class HomePresenter(private val view: HomeFragment, private val dataSource: Cate
 //            categories.add(CategoryItem(cateogory))
 //        }
 
-        val categories = response.map { Category(it, 0xFFFF0000) }
+        val start = 40
+        val end = 190
+        val diff = (start - end) / response.size
+        val categories = response.mapIndexed { index, s ->
+        val hsv = floatArrayOf(start + (diff * index).toFloat(), 100.0f, 100.0f)
+            Category(s, Color.HSVToColor(hsv).toLong()) }
         view.showCategories(categories)
     }
 

@@ -12,7 +12,7 @@ class CategoryRemoteDataSource {
     fun findAllCategories(callback: ListCategoryCallback) {
         HTTPClient.retrofit()
             .create(ChuckNorrisAPI::class.java)
-            .findAllCategories()
+            .findAllCategories(HTTPClient.API_KEY)
             .enqueue(object : Callback<List<String>> {
                 override fun onResponse(
                     call: Call<List<String>>,
@@ -22,7 +22,7 @@ class CategoryRemoteDataSource {
                         val categories = response.body()
                         callback.onSucess(categories ?: emptyList())
                     } else {
-                        val error = response.errorBody()?.toString()
+                        val error = response.errorBody()?.string()
                         callback.onError(error ?: "Erro desconhecido")
                     }
                 }
