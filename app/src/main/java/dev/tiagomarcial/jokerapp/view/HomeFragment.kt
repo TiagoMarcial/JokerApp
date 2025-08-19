@@ -47,10 +47,17 @@ class HomeFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_main)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+        if (adapter.itemCount == 0) {
         presenter.findAllCategories()
-
+        }
 
         recyclerView.adapter = adapter
+        adapter.setOnItemClickListener {item, view ->
+            val bundle = Bundle()
+            val categoryName = (item as CategoryItem).category.name
+            bundle.putString(JokeFragment.CATEGORY_KEY, categoryName)
+            findNavController().navigate(R.id.action_nav_home_to_nav_joke, bundle)}
+
     }
 
     fun showCategories(response: List<Category>) {

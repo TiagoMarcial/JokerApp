@@ -30,11 +30,13 @@ class HomePresenter(private val view: HomeFragment, private val dataSource: Cate
         val hsv = floatArrayOf(start + (diff * index).toFloat(), 100.0f, 100.0f)
             Category(s, Color.HSVToColor(hsv).toLong()) }
         view.showCategories(categories)
+        onComplete()
     }
 
 
     override fun onError(response: String) {
         view.showFailure(response)
+        onComplete()
     }
 
     override fun onComplete() {

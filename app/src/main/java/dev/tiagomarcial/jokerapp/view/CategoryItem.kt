@@ -9,7 +9,7 @@ import com.xwray.groupie.Item
 import dev.tiagomarcial.jokerapp.R
 import dev.tiagomarcial.jokerapp.model.Category
 
-class CategoryItem(private val category: Category) : Item<CategoryItem.CategoryViewHolder>() {
+class CategoryItem(val category: Category) : Item<CategoryItem.CategoryViewHolder>() {
 
     class CategoryViewHolder(view: View) : GroupieViewHolder(view)
 
