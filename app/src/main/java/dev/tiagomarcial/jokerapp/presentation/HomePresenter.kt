@@ -21,7 +21,7 @@ class HomePresenter(private val view: HomeFragment, private val dataSource: Cate
 //
 //        for (cateogory in response){
 //            categories.add(CategoryItem(cateogory))
-//        }
+//       . }
 
         val start = 40
         val end = 190
