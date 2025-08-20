@@ -4,15 +4,35 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.transition.Visibility
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dev.tiagomarcial.jokerapp.R
+import dev.tiagomarcial.jokerapp.model.Joke
+import dev.tiagomarcial.jokerapp.presentation.HomePresenter
+import dev.tiagomarcial.jokerapp.presentation.JokerPresenter
 
 class JokeFragment: Fragment() {
 
     companion object {
         const val CATEGORY_KEY = "category"
 
+    }
+
+    private lateinit var progressBar: ProgressBar
+    private lateinit var textView: TextView
+    private lateinit var imageView: ImageView
+
+    private lateinit var presenter: JokerPresenter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        presenter = JokerPresenter(this)
     }
 
     override fun onCreateView(
@@ -25,8 +45,28 @@ class JokeFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val categoryName = arguments?.getString(CATEGORY_KEY)
+        val categoryName = arguments?.getString(CATEGORY_KEY)!!
 
         activity?.findViewById<Toolbar>(R.id.toolbar)?.title = categoryName
+        progressBar = view.findViewById(R.id.progress_bar)
+        textView = view.findViewById(R.id.txt_joke)
+        view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {  }
+        presenter.findBy(categoryName)
+
+        presenter.findBy(categoryName)
     }
+    fun showJoke(joke: Joke) {
+        textView.text = joke.text
+    }
+
+    fun showProgress() {
+        progressBar.visibility = View.VISIBLE
+    }
+    fun hideProgress() {
+        progressBar.visibility = View.GONE
+    }
+    fun showFailure(message: String){
+        Toast.makeText(requireContext(),message, Toast.LENGTH_SHORT).show()
+    }
+
 }

@@ -25,6 +25,7 @@ class CategoryRemoteDataSource {
                         val error = response.errorBody()?.string()
                         callback.onError(error ?: "Erro desconhecido")
                     }
+                    callback.onComplete()
                 }
 
                 override fun onFailure(call: Call<List<String>>, t: Throwable) {
