@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.transition.Visibility
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.squareup.picasso.Picasso
 import dev.tiagomarcial.jokerapp.R
 import dev.tiagomarcial.jokerapp.model.Joke
 import dev.tiagomarcial.jokerapp.presentation.HomePresenter
@@ -50,13 +51,19 @@ class JokeFragment: Fragment() {
         activity?.findViewById<Toolbar>(R.id.toolbar)?.title = categoryName
         progressBar = view.findViewById(R.id.progress_bar)
         textView = view.findViewById(R.id.txt_joke)
-        view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {  }
-        presenter.findBy(categoryName)
+        imageView = view.findViewById(R.id.img_joke)
+
+
+        view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
+            presenter.findBy(categoryName)
+        }
+
 
         presenter.findBy(categoryName)
     }
     fun showJoke(joke: Joke) {
         textView.text = joke.text
+        Picasso.get().load(joke.iconUrl).into(imageView)
     }
 
     fun showProgress() {
