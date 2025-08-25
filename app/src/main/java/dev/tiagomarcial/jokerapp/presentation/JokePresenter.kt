@@ -5,7 +5,7 @@ import dev.tiagomarcial.jokerapp.data.JokeRemoteDataSource
 import dev.tiagomarcial.jokerapp.model.Joke
 import dev.tiagomarcial.jokerapp.view.JokeFragment
 
-class JokerPresenter(
+class JokePresenter(
     private val view: JokeFragment,
     private val datasource: JokeRemoteDataSource = JokeRemoteDataSource())
     : JokeCallback {
