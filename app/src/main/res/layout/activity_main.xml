@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:openDrawer="start"
     tools:context=".view.MainActivity"
-    android:layout_marginTop="20dp"
     >
 
     <include
